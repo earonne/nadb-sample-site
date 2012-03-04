@@ -1,0 +1,9 @@
+*.pyc
+*.pyo
+*.*~
+local_settings.py
+.DS_Store
+.project
+.pydevproject
+*.esproj/
+static/
