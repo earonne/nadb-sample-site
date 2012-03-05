@@ -1,0 +1,12 @@
+{% extends "nadb/base_nadb.html" %}
+    
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content_title %}
+    <a href="{{ object.get_absolute_url }}" title="View this post">{{ object.title }}</a>
+{% endblock %}
+
+{% block content %}
+    <p class="date">{{ object.published|date:"F d, Y" }}</p>
+    <p>{{ object.body|safe }}</p>
+{% endblock %}
