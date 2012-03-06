@@ -1,11 +1,11 @@
 from django.views.generic import list_detail, date_based
 from models import Post
 
-def post_list(request, page=0, paginate_by=20):
+def post_list(request, page=0, paginate_by=3):
 
     return list_detail.object_list(
         request,
-        queryset=Post.objects.all(),
+        queryset=Post.objects.published(),
         paginate_by=paginate_by,
         page=page
     )
@@ -18,5 +18,6 @@ def post_detail(request, year, month, day, slug):
         day=day,
         slug=slug,
         date_field='published',
-        queryset=Post.objects.all(),
+        queryset=Post.objects.published(),
     )
+    
