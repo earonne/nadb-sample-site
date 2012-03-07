@@ -1,7 +1,11 @@
 from django.contrib import admin
-from models import Post
+from models import Post, Category
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name','description',]
+  
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title','status',]
 
+admin.site.register(Category, CategoryAdmin)  
 admin.site.register(Post, PostAdmin)

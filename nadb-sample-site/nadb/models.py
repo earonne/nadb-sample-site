@@ -8,6 +8,25 @@ STATUS_CHOICES = (
     ('p', 'Published'),
 )
 
+class Category(models.Model):
+    name = models.CharField('name', max_length=100)
+    slug = models.SlugField('slug', unique=True)
+    description = models.TextField('description')
+    
+    class Meta:
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+        
+    @permalink
+    def get_absolute_url(self):
+        return ('category_detail', None, {
+            'slug': self.slug
+        })
+    
+    def __unicode__(self):
+        return u'%s' % self.name
+    
+            
 class Post(models.Model):
     title = models.CharField('title', max_length=200)
     slug = models.SlugField('slug', unique_for_date='published')
@@ -16,6 +35,7 @@ class Post(models.Model):
     published = models.DateTimeField('published', default=datetime.datetime.now)
     created = models.DateTimeField('created', auto_now_add=True)
     modified = models.DateTimeField('modified', auto_now=True)
+    categories = models.ManyToManyField(Category, blank=True)
     objects = PostManager()
     
     @permalink
