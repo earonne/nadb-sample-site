@@ -1,0 +1,14 @@
+{% extends "nadb/base_nadb.html" %}
+
+{% block title %}Posts archive for {{ year }}{% endblock %}
+
+{% block body %}
+<article>
+    <h2>Posts archive for {{ year }}</h2>
+    <ul>
+        {% for month in date_list %}
+        <li><a href="{% url post_list %}{{ year }}/{{ month|date:"b" }}/" title="View items posted this month">{{ month|date:"F" }}</a></li>
+        {% endfor %}
+    </ul>
+</article>
+{% endblock %}

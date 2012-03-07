@@ -1,0 +1,20 @@
+{% extends "nadb/base_nadb.html" %}
+
+{% block title %}Posts from {{ month|date:"F Y" }}{% endblock %}
+
+{% block body %}
+    <header>
+        <h2>Posts from {{ month|date:"F Y" }}</h2>
+    </header>
+    {% for post in object_list %}
+    <article>
+        <h2><a href="{{ post.get_absolute_url }}" title="View this post">{{ post.title }}</a></h2>
+        <p>{{ post.teaser }}</p>
+        <ul class="postinfo">
+            <li>{{ post.published|date:"F d, Y" }}</li>
+            <li>Posted by {{ post.author }}</li>
+            <li><a href="{{ post.get_absolute_url }}" title="View this post">Read full post</a></li>
+        </ul>
+    </article>
+    {% endfor %} 
+{% endblock %}

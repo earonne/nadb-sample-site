@@ -21,3 +21,29 @@ def post_detail(request, year, month, day, slug):
         queryset=Post.objects.published(),
     )
     
+def post_archive_year(request, year):
+    return date_based.archive_year(
+        request,
+        year=year,
+        date_field='published',
+        queryset=Post.objects.published(),
+    )
+
+def post_archive_month(request, year, month):
+    return date_based.archive_month(
+        request,
+        year=year,
+        month=month,
+        date_field='published',
+        queryset=Post.objects.published(),
+    )
+
+def post_archive_day(request, year, month, day):
+    return date_based.archive_day(
+        request,
+        year=year,
+        month=month,
+        day=day,
+        date_field='published',
+        queryset=Post.objects.published(),
+    )
