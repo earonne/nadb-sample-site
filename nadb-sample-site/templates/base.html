@@ -60,6 +60,15 @@
 				    {% endfor %}
 				    </ul>
 				</p>
+				<h3>Recent Posts</h3>
+			    <p>
+			        <ul>
+			        {% get_recent_posts 5 as recent_posts %}
+			        {% for p in recent_posts %}
+			            <li><a href="{{ p.get_absolute_url }}" title="View this post">{{ p.title }}</a></li>
+			        {% endfor %}
+			        </ul>
+			    </p>
 			</aside>
 			
 		</div> <!-- #main -->

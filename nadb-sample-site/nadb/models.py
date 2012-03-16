@@ -42,6 +42,9 @@ class Post(models.Model):
     categories = models.ManyToManyField(Category, blank=True)
     objects = PostManager()
     
+    class Meta:
+        ordering  = ('-published',)
+        
     @permalink
     def get_absolute_url(self):
         return ('post_detail', None, {
