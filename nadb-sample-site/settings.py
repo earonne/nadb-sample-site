@@ -116,6 +116,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nadb',
+    'django.contrib.markup',
     'django.contrib.admin',
 )
 

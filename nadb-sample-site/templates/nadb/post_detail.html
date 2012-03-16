@@ -1,12 +1,17 @@
 {% extends "nadb/base_nadb.html" %}
+{% load markup %}
     
 {% block title %}{{ object.title }}{% endblock %}
 
+{% block extra_head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/code.css">
+{% endblock %}
+    
 {% block content_title %}
     <a href="{{ object.get_absolute_url }}" title="View this post">{{ object.title }}</a>
 {% endblock %}
 
 {% block content %}
     <p class="date">{{ object.published|date:"F d, Y" }}</p>
-    <p>{{ object.body|safe }}</p>
+    <p>{{ object.body|markdown:'safe,codehilite' }}</p>
 {% endblock %}
