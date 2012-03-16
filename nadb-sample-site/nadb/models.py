@@ -2,6 +2,7 @@ from django.db import models
 import datetime
 from django.db.models import permalink
 from managers import PostManager
+from markdown import markdown
 
 STATUS_CHOICES = (
     ('d', 'Draft'),
@@ -31,6 +32,7 @@ class Post(models.Model):
     title = models.CharField('title', max_length=200)
     slug = models.SlugField('slug', unique_for_date='published')
     body = models.TextField('body')
+    body_html = models.TextField(editable=False, blank=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
     published = models.DateTimeField('published', default=datetime.datetime.now)
     created = models.DateTimeField('created', auto_now_add=True)
@@ -46,3 +48,8 @@ class Post(models.Model):
             'day': self.published.day,
             'slug': self.slug
         })
+    
+    def save(self):
+        self.body_html = markdown(self.body, ['codehilite'])
+        super(Post, self).save()
+

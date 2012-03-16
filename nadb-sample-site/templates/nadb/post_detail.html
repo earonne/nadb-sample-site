@@ -13,5 +13,5 @@
 
 {% block content %}
     <p class="date">{{ object.published|date:"F d, Y" }}</p>
-    <p>{{ object.body|markdown:'safe,codehilite' }}</p>
+    <p>{{ object.body_html|safe }}</p>
 {% endblock %}
