@@ -3,6 +3,7 @@ import datetime
 from django.db.models import permalink
 from managers import PostManager
 from markdown import markdown
+from django.contrib.auth.models import User
 
 STATUS_CHOICES = (
     ('d', 'Draft'),
@@ -34,6 +35,7 @@ class Post(models.Model):
     body = models.TextField('body')
     body_html = models.TextField(editable=False, blank=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+    author = models.ForeignKey(User, blank=True, null=True)
     published = models.DateTimeField('published', default=datetime.datetime.now)
     created = models.DateTimeField('created', auto_now_add=True)
     modified = models.DateTimeField('modified', auto_now=True)

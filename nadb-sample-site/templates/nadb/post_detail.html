@@ -12,6 +12,6 @@
 {% endblock %}
 
 {% block content %}
-    <p class="date">{{ object.published|date:"F d, Y" }}</p>
+    <p class="date">Posted by {{ object.author }} on {{ object.published|date:"F d, Y" }}</p>
     <p>{{ object.body_html|safe }}</p>
 {% endblock %}
