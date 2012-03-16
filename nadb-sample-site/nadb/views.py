@@ -1,5 +1,6 @@
 from django.views.generic import list_detail, date_based
-from models import Post
+from models import Post, Category
+from django.shortcuts import get_object_or_404
 
 def post_list(request, page=0, paginate_by=3):
 
@@ -47,3 +48,20 @@ def post_archive_day(request, year, month, day):
         date_field='published',
         queryset=Post.objects.published(),
     )
+    
+def category_list(request):
+    return list_detail.object_list(
+        request,
+        queryset=Category.objects.all(),
+    )
+
+def category_detail(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    
+    return list_detail.object_list(
+        request,
+        queryset=category.post_set.published(),
+        template_name='nadb/category_detail.html',
+        extra_context={'category': category},
+    )
+    

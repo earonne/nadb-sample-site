@@ -56,7 +56,7 @@
 				    <ul>
 				    {% get_blog_categories as categories %}
 				    {% for c in categories %}
-				        <li>{{ c }}</li>
+				        <li><a href="{% url category_list %}{{ c.slug }}/" title="View posts in this category">{{ c.name }}</a></li>
 				    {% endfor %}
 				    </ul>
 				</p>
