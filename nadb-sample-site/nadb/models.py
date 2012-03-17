@@ -32,6 +32,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField('title', max_length=200)
     slug = models.SlugField('slug', unique_for_date='published')
+    teaser = models.TextField('teaser', blank=True)
     body = models.TextField('body')
     body_html = models.TextField(editable=False, blank=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)

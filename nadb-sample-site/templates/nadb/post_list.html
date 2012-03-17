@@ -9,7 +9,8 @@
     <section>
         <h2><a href="{{ post.get_absolute_url }}" title="View this post">{{ post.title }}</a></h2>
         <p class="date">{{ post.published|date:"F d, Y" }}</p>
-        <p>{{ post.body }}</p>
+        <p>{{ post.teaser }}</p>
+        <p><a href="{{ post.get_absolute_url }}" title="View this post">Read full post</a></p>
     </section>
     {% endfor %}
 

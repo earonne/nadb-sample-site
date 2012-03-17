@@ -17,7 +17,7 @@ class PostFeed(Feed):
         return obj.title
 
     def item_description(self, obj):
-        return obj.body
+        return obj.teaser
         
     def item_pubdate(self, obj):
         return obj.published
