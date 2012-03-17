@@ -1,0 +1,22 @@
+{% extends "nadb/base_nadb.html" %}
+{% load markup %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/code.css">
+{% endblock %}
+
+{% block content_title %}
+    <a href="{{ category.get_absolute_url }}" title="View posts in this category">Posts in category: {{ category.name }}</a>
+{% endblock %}
+
+{% block content %}
+    {% for post in object_list %}
+    <section>
+        <h2><a href="{{ post.get_absolute_url }}" title="View this post">{{ post.title }}</a></h2>
+        <p class="date">Posted by {{ post.author }} on {{ post.published|date:"F d, Y" }}</p>
+        <p>{{ post.body_html|safe }}</p>
+    </section>
+    {% endfor %}
+{% endblock %}

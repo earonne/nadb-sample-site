@@ -1,0 +1,15 @@
+{% extends "nadb/base_nadb.html" %}
+    
+{% block title %}Categories{% endblock %}
+
+{% block content_title %}Categories{% endblock %}
+
+{% block content %}
+    <section>
+        <ul>
+        {% for cat in object_list %}
+        <li><a href="{% url category_list %}{{ cat.slug }}/" title="View items posted in this category">{{ cat.name }}</a></li>
+        {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
