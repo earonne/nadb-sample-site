@@ -118,6 +118,7 @@ INSTALLED_APPS = (
     'nadb',
     'django.contrib.markup',
     'django.contrib.admin',
+    'django.contrib.comments',
 )
 
 # A sample logging configuration. The only tangible logging

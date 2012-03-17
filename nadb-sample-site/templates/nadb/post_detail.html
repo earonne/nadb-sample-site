@@ -1,5 +1,6 @@
 {% extends "nadb/base_nadb.html" %}
 {% load markup %}
+{% load comments %}
     
 {% block title %}{{ object.title }}{% endblock %}
 
@@ -14,4 +15,6 @@
 {% block content %}
     <p class="date">Posted by {{ object.author }} on {{ object.published|date:"F d, Y" }}</p>
     <p>{{ object.body_html|safe }}</p>
+    <p>{% render_comment_list for object %}</p>
+    <p>{% render_comment_form for object %}</p>
 {% endblock %}
